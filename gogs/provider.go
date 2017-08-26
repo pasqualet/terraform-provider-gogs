@@ -22,10 +22,12 @@ func Provider() terraform.ResourceProvider {
 			},
 		},
 		DataSourcesMap: map[string]*schema.Resource{
-			"gogs_user": dataSourceGogsUser(),
+			"gogs_repository": dataSourceGogsRepository(),
+			"gogs_user":       dataSourceGogsUser(),
 		},
 		ResourcesMap: map[string]*schema.Resource{
-			"gogs_user": resourceGogsUser(),
+			"gogs_repository": resourceGogsRepository(),
+			"gogs_user":       resourceGogsUser(),
 		},
 		ConfigureFunc: configureProvider,
 	}

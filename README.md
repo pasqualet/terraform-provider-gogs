@@ -40,6 +40,11 @@ resource "gogs_user" "sample_user" {
     email = "sample@sample.com"
     password = "password"
 }
+
+resource "gogs_repository" "sample" {
+    username = "${gogs_user.sample_user.username}"
+    name = "sample-repository"
+}
 ```
 
 Developing the Provider
@@ -70,6 +75,7 @@ In order to run the full suite of Acceptance tests, run `make testacc`.
 export GOGS_URL=https://gogs.example.com # The target Gogs instance.
 export GOGS_TOKEN=3a626845fc4922fff0e84c6516b6adc8b14ff7b2 # The Gogs personal access token.
 export GOGS_USERNAME=user1 # The user already existing in Gogs.
+export GOGS_REPOSITORY=repository # The repository alreaddy existing in Gogs.
 ```
 
 ```sh
